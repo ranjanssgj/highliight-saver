@@ -23,5 +23,9 @@ Highlight, organize, and never lose a thought. Save text from any website, custo
 - contextMenus: Enables the "Save Highlight" option in the right-click menu.
 - Data Collection: This extension does not collect or transmit any personal data or browsing history to external servers. All highlights are stored locally within the browser's storage API.
 
-![](https://api.visitorbadge.io/api/VisitorHit?user=ranjanssgj&repo=highlight-saver&countColor=%237B1E7A)
+<p align="center">
+  <a href="#">
+  <img src="https://api.visitorbadge.io/api/VisitorHit?user=ranjanssgj&repo=highlight-saver&countColor=%237B1E7A"/>
+  </a>
+  </p>
 
