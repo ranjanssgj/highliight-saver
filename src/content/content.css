@@ -1,0 +1,200 @@
+/* CSS for Highlight Saver content script */
+:root {
+    --hs-primary: #3b82f6;
+    --hs-primary-hover: #2563eb;
+    --hs-bg: rgba(255, 255, 255, 0.95);
+    --hs-text: #1e293b;
+    --hs-text-muted: #64748b;
+    --hs-border: #e2e8f0;
+    --hs-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --hs-blur: blur(8px);
+
+    /* Highlight Colors - Lighter for Light Mode */
+    --hs-hl-yellow: #fde047;
+    --hs-hl-green: #86efac;
+    --hs-hl-pink: #f472b6;
+    --hs-hl-blue: #93c5fd;
+    --hs-hl-orange: #fb923c;
+    --hs-hl-text: #0f172a;
+    /* Dark text for light backgrounds */
+}
+
+body.dark-mode {
+    --hs-bg: rgba(15, 23, 42, 0.95);
+    --hs-text: #f8fafc;
+    --hs-text-muted: #94a3b8;
+    --hs-border: #334155;
+    --hs-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+    /* Highlight Colors - More saturated/distinct for Dark Mode */
+    --hs-hl-yellow: #eab308;
+    --hs-hl-green: #22c55e;
+    --hs-hl-pink: #db2777;
+    --hs-hl-blue: #2563eb;
+    --hs-hl-orange: #ea580c;
+    --hs-hl-text: #ffffff;
+    /* White text for darker backgrounds */
+}
+
+.highlight-saver-mark {
+    background-color: var(--hs-hl-yellow);
+    color: var(--hs-hl-text);
+    display: inline;
+    border-radius: 2px;
+    padding: 1px 0;
+}
+
+.highlight-saver-mark:hover {
+    cursor: pointer;
+    border-bottom: 2px dashed var(--hs-primary);
+    opacity: 0.9;
+}
+
+/* Custom Modal & Toolbar Styles */
+.hs-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.hs-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hs-modal-container {
+    background: var(--hs-bg);
+    color: var(--hs-text);
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: var(--hs-shadow);
+    backdrop-filter: var(--hs-blur);
+    border: 1px solid var(--hs-border);
+    max-width: 320px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hs-modal-overlay.active .hs-modal-container {
+    transform: scale(1);
+}
+
+.hs-modal-header {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--hs-text);
+}
+
+.hs-modal-body {
+    font-size: 14px;
+    color: var(--hs-text-muted);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.hs-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.hs-btn-primary {
+    background: var(--hs-primary);
+    color: white;
+}
+
+.hs-btn-primary:hover {
+    background: var(--hs-primary-hover);
+}
+
+.hs-btn-secondary {
+    background: var(--hs-border);
+    color: var(--hs-text);
+}
+
+.hs-btn-destructive {
+    background: #ef4444;
+    color: white;
+}
+
+/* Mini Toolbar */
+.hs-toolbar {
+    position: absolute;
+    background: var(--hs-bg);
+    color: var(--hs-text);
+    border: 1px solid var(--hs-border);
+    backdrop-filter: var(--hs-blur);
+    border-radius: 20px;
+    padding: 6px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: var(--hs-shadow);
+    z-index: 9991;
+    transform: translate(-50%, -120%);
+    animation: hsSlideUp 0.2s ease-out;
+}
+
+@keyframes hsSlideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -120%);
+    }
+}
+
+.hs-toolbar-color {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+}
+
+.hs-toolbar-color:hover {
+    transform: scale(1.2);
+}
+
+.hs-toolbar-color.active {
+    border-color: var(--hs-text);
+}
+
+.hs-toolbar-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--hs-border);
+}
+
+.hs-toolbar-delete {
+    cursor: pointer;
+    font-size: 14px;
+    color: #ef4444;
+    opacity: 0.8;
+}
+
+.hs-toolbar-delete:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}

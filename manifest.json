@@ -1,0 +1,60 @@
+{
+    "manifest_version": 3,
+    "name": "Highlight Saver",
+    "version": "1.0.0",
+    "description": "Save highlighted text from webpages, synced across your devices.",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "contextMenus",
+        "scripting"
+    ],
+    "background": {
+        "service_worker": "src/background/background.js",
+        "scripts": [
+            "src/utils/storage.js",
+            "src/background/background.js"
+        ],
+        "type": "module"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "highlight-saver@yourdomain.com",
+            "strict_min_version": "115.0",
+            "data_collection_permissions": {
+                "required": [
+                    "none"
+                ]
+            }
+        }
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "action": {
+        "default_popup": "src/popup/popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "32": "icons/icon32.png",
+            "48": "icons/icon48.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "css": [
+                "src/content/content.css"
+            ],
+            "js": [
+                "src/utils/storage.js",
+                "src/utils/ui.js",
+                "src/content/content.js"
+            ]
+        }
+    ]
+}

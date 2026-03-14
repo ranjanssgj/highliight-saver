@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Saver</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div id="pin-extension-banner" class="pin-extension-banner hidden">
+        <div class="pin-banner-content">
+            <span class="pin-icon">📌</span>
+            <p>Pin **Highlight Saver** for quick access!</p>
+            <button id="close-pin-banner" class="close-banner">&times;</button>
+        </div>
+    </div>
+    <header>
+        <div class="header-top">
+            <h1>Your Highlights</h1>
+            <div id="header-actions" class="header-actions">
+                <!-- Buttons injected by JS -->
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="search" id="search-input" placeholder="Search highlights..." autocomplete="off">
+        </div>
+    </header>
+    <main id="highlights-container">Loading...</main>
+    <footer>
+        <a href="https://ko-fi.com/ranjanssgj" target="_blank" class="support-dev-link">Support Developer ❤️</a>
+        <div class="footer-actions">
+            <button id="export-btn" title="Backup highlights">Export</button>
+            <button id="import-btn" title="Restore highlights">Import</button>
+        </div>
+        <input type="file" id="import-input" accept=".json" style="display: none;">
+    </footer>
+    <script src="../utils/storage.js"></script>
+    <script src="../utils/ui.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>
